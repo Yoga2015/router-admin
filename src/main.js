@@ -14,3 +14,4 @@ new Vue({
   // 2、挂载 router
   router:router
 }).$mount('#app')
+

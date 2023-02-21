@@ -1,10 +1,9 @@
 <template>
   <div class="login-container">
     <div class="login-box">
-
       <!-- 头像区域 -->
       <div class="text-center avatar-box">
-        <img src="../assets/logo.png" class="img-thumbnail avatar" alt="">
+        <img src="../assets/logo.png" class="img-thumbnail avatar" alt="" />
       </div>
 
       <!-- 表单区域 -->
@@ -12,28 +11,70 @@
         <!-- 登录名称 -->
         <div class="form-group form-inline">
           <label for="username">登录名称</label>
-          <input type="text" class="form-control ml-2" id="username" placeholder="请输入登录名称" autocomplete="off">
+          <input
+            type="text"
+            class="form-control ml-2"
+            id="username"
+            placeholder="请输入登录名称"
+            autocomplete="off"
+            v-model.trim="username"
+          />
         </div>
         <!-- 登录密码 -->
         <div class="form-group form-inline">
           <label for="password">登录密码</label>
-          <input type="password" class="form-control ml-2" id="password" placeholder="请输入登录密码">
+          <input
+            type="password"
+            class="form-control ml-2"
+            id="password"
+            placeholder="请输入登录密码"
+            v-model.trim="password"
+          />
         </div>
         <!-- 登录和重置按钮 -->
         <div class="form-group form-inline d-flex justify-content-end">
-          <button type="button" class="btn btn-secondary mr-2">重置</button>
-          <button type="button" class="btn btn-primary">登录</button>
+          <button type="button" class="btn btn-secondary mr-2" @click="reset">
+            重置
+          </button>
+          <button type="button" class="btn btn-primary" @click="login">
+            登录
+          </button>
         </div>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MyLogin',
-}
+  name: "MyLogin",
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    // 重置用户名、密码
+    reset() {
+      (this.username = ""), (this.password = "");
+    },
+
+    // 登录判断
+    login() {
+      if (this.username === "admin" && this.password === "123456") {
+        // 登录成功，就存储 token
+        localStorage.setItem("token", "admin xxxx");
+        // 有了 token，就可以跳转到 /home 用户个人后台主页
+        this.$router.push("/home");
+      } else {
+        localStorage.removeItem("token");
+        // 登录失败
+        alert("账号不存在 或 密码错误！");
+      }
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>

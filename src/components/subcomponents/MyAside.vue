@@ -1,20 +1,32 @@
 <template>
   <div class="layout-aside-container">
+
     <!-- 左侧边栏列表 -->
     <ul class="user-select-none menu">
-      <li class="menu-item">用户管理</li>
-      <li class="menu-item">权限管理</li>
-      <li class="menu-item">商品管理</li>
-      <li class="menu-item">订单管理</li>
-      <li class="menu-item">系统设置</li>
+      <li class="menu-item">
+        <router-link to="/home/users">用户管理</router-link>
+      </li>
+      <li class="menu-item">
+        <router-link to="/home/rights">权限管理</router-link>
+      </li>
+      <li class="menu-item">
+        <router-link to="/home/goods">商品管理</router-link>
+      </li>
+      <li class="menu-item">
+        <router-link to="/home/orders">订单管理</router-link>
+      </li>
+      <li class="menu-item">
+        <router-link to="/home/settings">系统设置</router-link>
+      </li>
     </ul>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MyAside',
-}
+  name: "MyAside",
+};
 </script>
 
 <style lang="less" scoped>
@@ -31,8 +43,8 @@ export default {
     line-height: 50px;
     font-weight: bold;
     font-size: 14px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     &:hover {
       background-color: #efefef;
       cursor: pointer;
@@ -55,7 +67,7 @@ export default {
   position: relative;
   // 伪元素实现路由高亮效果
   &::before {
-    content: ' ';
+    content: " ";
     display: block;
     width: 4px;
     height: 100%;
